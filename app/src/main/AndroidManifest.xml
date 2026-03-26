@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application android:label="@string/widget_name"
+            android:icon="@drawable/icon">
+        <receiver android:name=".ProtipWidget"
+            android:label="@string/widget_name"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.dismal.protips.NEXT_TIP" />
+                <action android:name="com.dismal.protips.HEE_HEE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE" />
+                <data android:scheme="android_secret_code" android:host="8477" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_build" />
+        </receiver>
+        <service android:name=".RssRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <activity android:name=".SettingsActivity"
+            android:label="RSS Settings"
+            android:exported="true" />
+    </application>
+</manifest>
